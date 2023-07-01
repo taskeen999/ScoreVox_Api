@@ -1,7 +1,7 @@
-using Business_Layer.Abstraction;
-using Business_Layer.Implementation;
+using ScoreVox.BL.Abstraction;
 using Domain_Layer.DataBase;
 using Microsoft.EntityFrameworkCore;
+using ScoreVox.BL.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,18 +11,17 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("cs")));
-builder.Services.AddScoped<ITeamRank,TeamRank>();
-//builder.Services.AddTransient<IteamRanks, teamRanks>();
+builder.Services.AddScoped<ITeamRankRepo,TeamRankRepo>();
+builder.Services.AddScoped<IPlayersRankRepo, PlayersRankRepo>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 

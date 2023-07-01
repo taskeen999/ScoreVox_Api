@@ -12,7 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusinessLayer\Business_Layer.csproj" />
+    <ProjectReference Include="..\BusinessLayer\ScoreVox.BL.csproj" />
+    <ProjectReference Include="..\DomainLayer\ScoreVox.DAl.csproj" />
   </ItemGroup>
 
 </Project>
+
